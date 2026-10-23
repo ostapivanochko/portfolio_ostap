@@ -4,7 +4,7 @@ A small static website with Markdown content and a calm, editorial design.
 
 ## The simple workflow
 
-You edit the source files in this project and push the changes to GitHub. Cloudflare Pages then builds and publishes the website automatically.
+You edit the source files in this project and push the changes to GitHub. The connected Cloudflare Worker then builds and publishes the website automatically.
 
 **Do not edit `dist/` or upload it to GitHub.** It is a temporary, generated copy of the public website. Cloudflare creates it from the source files during each deployment. It is also excluded by `.gitignore`.
 
@@ -18,7 +18,7 @@ Upload the project source, including:
 - `diary/` and `projects/` (the small HTML route files)
 - `.gitignore` and `README.md`
 
-Do not upload `dist/`; do not publish the repository publicly while it contains private drafts. A private GitHub repository works with Cloudflare Pages.
+Do not upload `dist/`; do not publish the repository publicly while it contains private drafts. A private GitHub repository works with Cloudflare Workers Builds.
 
 ## Add a diary entry
 
@@ -69,12 +69,27 @@ The homepage graph appears automatically once at least one Diary article or proj
 
 ## Deploy free with your domain
 
-Cloudflare Pages offers free hosting for this static site.
+This project deploys as a **Cloudflare Worker with Static Assets**. Cloudflare's dashboard may group Workers and Pages under “Workers & Pages”; there is no need to create a separate Pages project.
 
-1. Create a private GitHub repository and push the source files listed above.
-2. In Cloudflare, open **Workers & Pages → Create → Pages → Connect to Git** and select that repository.
-3. Set **Build command** to `node scripts/build-content-manifest.js` and **Build output directory** to `dist`.
-4. Deploy. After this setup, pushing changes to the selected branch triggers a new deployment automatically.
-5. In your Pages project, open **Custom domains** and add your domain. Follow the DNS instructions Cloudflare shows.
+### Initial setup
 
-If you change your domain's nameservers to Cloudflare, copy any existing email-related DNS records (such as MX and TXT records) before switching. The build uses Node.js and does not require installing packages.
+1. Put the project source files in a private GitHub repository. Do not add `dist/`.
+2. In Cloudflare, open **Workers & Pages** and create or open the `portfolio` Worker connected to that repository.
+3. In the Worker, open **Settings → Builds** (or the build settings shown for the Git-connected Worker).
+4. Configure:
+   - Root directory: `/`
+   - Build command: `node scripts/build-content-manifest.js`
+   - Deploy command: `npx wrangler deploy`
+5. Save the settings and start a new deployment. `wrangler.jsonc` tells Wrangler to deploy the generated `dist/` directory as static assets.
+6. Confirm the deployment is successful and test the `workers.dev` address.
+7. Open **Custom domains** for the Worker, add your domain, and follow Cloudflare's DNS instructions.
+
+The site being online only confirms that a deployment completed. To confirm future GitHub changes will deploy automatically, check that the Worker has a Git repository and production branch connected. A deployment labeled **Manually deployed** may not be triggered by later Git pushes.
+
+### Update the site
+
+Edit Markdown in `content/`, then commit and push to the connected production branch. Cloudflare runs the build command, generates `dist/`, then runs `npx wrangler deploy`. You do not manually edit or upload `dist/`.
+
+If the Worker is not connected to Git, use **Settings → Builds** to connect its repository and production branch. If you deploy manually, run `node scripts/build-content-manifest.js` and then `npx wrangler deploy` from the project directory.
+
+If you change your domain's nameservers to Cloudflare, copy any existing email-related DNS records (such as MX and TXT records) before switching.

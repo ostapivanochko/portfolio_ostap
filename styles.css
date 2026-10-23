@@ -1,0 +1,297 @@
+:root {
+  --paper: #f5f1e8;
+  --ink: #191919;
+  --muted: #4d4d4d;
+  --line: rgba(25, 25, 25, 0.12);
+  --accent: #7a5a2d;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.site-shell {
+  width: min(880px, calc(100% - 3rem));
+  margin: 3.5rem auto 5rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.7rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.88rem;
+}
+
+.site-brand {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.4rem;
+}
+
+.site-header a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-header nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.page {
+  width: 100%;
+}
+
+.article {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.article h1,
+.article h2,
+.article h3 {
+  font-family: "Libre Baskerville", serif;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-top: 1.8rem;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+
+.article h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-top: 0;
+}
+
+.article p {
+  margin: 0 0 1.2rem;
+  color: #1f1f1f;
+  font-size: 1.05rem;
+}
+
+.article ul,
+.article ol {
+  margin: 1rem 0 1.2rem;
+  padding-left: 1.2rem;
+}
+
+.article li {
+  margin-bottom: 0.45rem;
+}
+
+.article blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.2rem 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.article img {
+  display: none;
+}
+
+.graph-box {
+  margin-top: 2.2rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.graph-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.graph-heading h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.graph-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
+}
+
+#graph-reset {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0.2rem 0;
+  color: var(--muted);
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
+}
+
+#graph-reset:hover,
+#graph-reset:focus-visible {
+  color: var(--ink);
+}
+
+.graph-legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+}
+
+.graph-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.graph-legend i {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 1px solid var(--accent);
+}
+
+.legend-article {
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.legend-project {
+  background: transparent;
+}
+
+#graph {
+  width: 100%;
+  height: 340px;
+  background: transparent;
+  border: 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+.graph-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.graph-node circle,
+.graph-node rect {
+  fill: var(--accent);
+  stroke: var(--paper);
+  stroke-width: 2px;
+}
+
+.graph-node.project rect {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 2px;
+}
+
+.graph-node:focus-visible circle,
+.graph-node:focus-visible rect {
+  stroke: var(--ink);
+  stroke-width: 3px;
+}
+
+.graph-label {
+  fill: var(--ink);
+  font-size: 12px;
+  pointer-events: none;
+  font-family: "Libre Baskerville", Georgia, serif;
+}
+
+.graph-link {
+  stroke: rgba(25,25,25,0.28);
+  stroke-width: 1px;
+}
+
+.graph-node.is-dimmed,
+.graph-link.is-dimmed {
+  opacity: 0.14;
+}
+
+.diary-entry {
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.diary-entry h2 {
+  margin-top: 0;
+}
+
+.entry-date {
+  margin: -0.4rem 0 1rem !important;
+  color: var(--muted) !important;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem !important;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    width: calc(100% - 2rem);
+    margin-top: 2rem;
+  }
+
+  .site-header {
+    margin-bottom: 2rem;
+  }
+
+  .site-header nav {
+    gap: 1rem;
+  }
+
+  .graph-heading {
+    align-items: flex-start;
+  }
+
+  #graph {
+    height: 280px;
+  }
+}

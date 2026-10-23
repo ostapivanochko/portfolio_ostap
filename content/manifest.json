@@ -1,0 +1,90 @@
+{
+  "notes": [
+    {
+      "id": "agentic-systems",
+      "title": "agentic systems",
+      "path": "notes/agentic-systems.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    },
+    {
+      "id": "ai-for-science",
+      "title": "ai for science",
+      "path": "notes/ai-for-science.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    },
+    {
+      "id": "causal-inference",
+      "title": "causal inference",
+      "path": "notes/causal-inference.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    },
+    {
+      "id": "protein-peptide-interactions",
+      "title": "protein peptide interactions",
+      "path": "notes/protein-peptide-interactions.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    },
+    {
+      "id": "reinforcement-learning",
+      "title": "reinforcement learning",
+      "path": "notes/reinforcement-learning.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    },
+    {
+      "id": "robotics",
+      "title": "robotics",
+      "path": "notes/robotics.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "note"
+    }
+  ],
+  "diary": [],
+  "articles": [],
+  "projects": [],
+  "pages": [
+    {
+      "id": "diary",
+      "title": "diary",
+      "path": "diary.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "page"
+    },
+    {
+      "id": "index",
+      "title": "index",
+      "path": "index.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "page"
+    },
+    {
+      "id": "projects",
+      "title": "projects",
+      "path": "projects.md",
+      "date": null,
+      "tags": [],
+      "published": false,
+      "type": "page"
+    }
+  ]
+}
